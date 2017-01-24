@@ -1,0 +1,31 @@
+model "./feasible_paths.mod";
+data "{DAT}";
+option solver "../cplex";
+#solve;
+# display card(A);
+# display card(O);
+# display r, rmean;
+#display x,y;
+
+set N{nn in S diff {school},step in 0 .. n-1} := setof{i in S} i;
+
+solve;
+
+for {nnn in S diff {school}, step in 0 .. n-1}
+	display nnn, step;
+	
+#if (step = 0) 
+	#then setof{i in S: (nn,i) in A} (i,l[nn,i]*alpha)
+	#else setof{(i,ll) in N[nn,step-1], j in S: (i,j) in A and 
+	#	l[i,j]+l[j,school] <= ll } (j,ll-l[i,j]);
+
+
+#param selected{i in S, j in S: (i,j) in A};
+
+#for {i in S, j in S: (i,j) in A} 
+#if x[i,j] = 1 
+#then let selected[i,j] := 1;
+#else let selected[i,j] := 0;
+
+#set Sol := setof{i in S, j in S: (i,j) in A and selected[i,j] = 1} (i,j);
+#display Sol;
