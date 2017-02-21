@@ -23,6 +23,7 @@ def main():
     for c in cities:
         c.draw(win)
 
+
     nodes = range(nNodes+1)
 
     def handleCityClick(clickPoint):
