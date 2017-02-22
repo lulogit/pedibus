@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ProblemInstance.
+ * this class represents a particular instance
+ * of the pedibus problem
  */
 public class ProblemInstance {
 	
@@ -39,10 +41,10 @@ public class ProblemInstance {
 	 
 	/**
 	 * Instantiates a new problem instance.
-	 *
-	 * @param nodes the nodes
-	 * @param alpha the alpha
-	 * @param danger the danger
+	 * 
+	 * @param nodes a map of id->node
+	 * @param alpha the alpha value for the problem.
+	 * @param danger the danger for each path of pair of nodes.
 	 */
 	private ProblemInstance(Map<Integer,Node> nodes, float alpha, CostMatrix danger) {
 		this.alpha = alpha;
@@ -148,7 +150,8 @@ public class ProblemInstance {
 	}
 	
 	/**
-	 * Gets the school from the .dat file.
+	 * Gets the school 
+	 * Return the school node.
 	 *
 	 * @return the school
 	 */
@@ -157,7 +160,7 @@ public class ProblemInstance {
 	}
 	
 	/**
-	 * Gets the nodes and put them into a list but not the school.
+	 * Gets the nodes except the school.
 	 *
 	 * @return the nodes 
 	 */
@@ -174,9 +177,9 @@ public class ProblemInstance {
 	/**
 	 * Gets the distance between nodes.
 	 *
-	 * @param n1 the n 1
-	 * @param n2 the n 2
-	 * @return the distance
+	 * @param n1 a random node 
+	 * @param n2 another random node
+	 * @return the distance between those two nodes
 	 */
 	public float getDistance(int n1, int n2){
 		return this.distances.at(n1, n2);
@@ -187,7 +190,7 @@ public class ProblemInstance {
 	 *
 	 * @param n1 the n 1
 	 * @param n2 the n 2
-	 * @return the danger
+	 * @return the danger between those two nodes.
 	 */
 	public float getDanger(int n1, int n2){
 		return this.danger.at(n1, n2);

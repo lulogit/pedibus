@@ -15,11 +15,14 @@ import polimi.or.pedibus.model.ProblemInstance;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Solution about the path for the pedibus.
+ * The Class Solution 
+ * this class is solving the path for the pedibus.
  */
 public class Solution {
 	
-	/** The next. */
+	/** The next.
+	 * for each node which node should follow in the solution.
+	 */
 	private final Map<Integer,Integer> next;
 	
 	/** The tot danger. */
@@ -63,8 +66,7 @@ public class Solution {
 	}
 	
 	/**
-	 * Sets the next.
-	 * it returns a solution with the next node for nodes in the solution 
+	 * Add an arc to the solution,setting which node follows a node in a path 
 	 * @param node the node
 	 * @param nextNode the next node
 	 * @return the solution

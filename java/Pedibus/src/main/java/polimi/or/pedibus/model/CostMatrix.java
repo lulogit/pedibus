@@ -5,6 +5,10 @@ import java.util.Map;
 // TODO: Auto-generated Javadoc
 /**
  * The Class CostMatrix.
+ * This is a matrix for a generic cost (it can be danger or distance)
+ * In order to insert the values, there are two functions
+ * one for changing the row which start from the 0 and can only be increased
+ * the other is for insert a value for a given column index
  */
 public class CostMatrix {
 	
@@ -51,7 +55,8 @@ public class CostMatrix {
 
 	/**
 	 * Euclidean distances.
-	 *
+	 * It returns a cost matrix in which each cost is the euclidean distance 
+	 * of every pair of nodes.
 	 * @param nodes the nodes
 	 * @return the cost matrix
 	 */
@@ -68,7 +73,7 @@ public class CostMatrix {
 	}
 	
 	/**
-	 * At.
+	 * It return the cost for couple of nodes.
 	 *
 	 * @param i the i
 	 * @param j the j
