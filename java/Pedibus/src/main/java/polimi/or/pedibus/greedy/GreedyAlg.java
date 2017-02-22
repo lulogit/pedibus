@@ -7,7 +7,7 @@ import polimi.or.pedibus.solution.Solution;
 /**
  * The Class GreedyAlg.
  */
-public abstract class GreedyAlg {
+abstract class GreedyAlg {
 	
 	/**
 	 * Solve.

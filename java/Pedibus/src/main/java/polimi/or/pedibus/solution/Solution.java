@@ -1,10 +1,16 @@
 package polimi.or.pedibus.solution;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import polimi.or.pedibus.model.Node;
 import polimi.or.pedibus.model.ProblemInstance;
 
 // TODO: Auto-generated Javadoc
@@ -32,8 +38,8 @@ public class Solution {
 	 */
 	public Solution(ProblemInstance instance){
 		next = new HashMap<>();
-		for (Entry<Integer,Node> e: instance.getNodes()){
-			next.put(e.getKey(), null);
+		for (Integer i: instance.getNodeIndices()){
+			next.put(i, null);
 		}
 		totDanger = 0.f;
 		numLeaves = 0;
@@ -65,6 +71,16 @@ public class Solution {
 	 */
 	public Solution setNext(Integer node, Integer nextNode){
 		return new Solution(this, node, nextNode);
+	}
+	
+	public void writeToFile(String filename) throws IOException{
+		List<String> lines = new ArrayList<>();
+		for (Entry<Integer,Integer> e: next.entrySet()){
+			// write arc as node indices, separated by a space
+			lines.add(e.getKey()+" "+e.getValue());
+		}
+		Path file = Paths.get(filename);
+		Files.write(file, lines, Charset.forName("UTF-8"));
 	}
 
 }

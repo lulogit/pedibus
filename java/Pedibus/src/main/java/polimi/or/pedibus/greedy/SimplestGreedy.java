@@ -14,8 +14,11 @@ public class SimplestGreedy extends GreedyAlg {
 	 */
 	@Override
 	public Solution solve(ProblemInstance instance) {
-		// TODO Auto-generated method stub
-		return null;
+		Solution currentSolution = new Solution(instance);
+		for (Integer i: instance.getNodeIndices()){
+			currentSolution = currentSolution.setNext(i, ProblemInstance.SCHOOL);
+		}
+		return currentSolution;
 	}
 
 }
