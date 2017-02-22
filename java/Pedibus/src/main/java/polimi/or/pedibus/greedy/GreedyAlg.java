@@ -6,6 +6,7 @@ import polimi.or.pedibus.solution.Solution;
 // TODO: Auto-generated Javadoc
 /**
  * The Class GreedyAlg.
+ * it is a generic algorithm
  */
 public abstract class GreedyAlg {
 	

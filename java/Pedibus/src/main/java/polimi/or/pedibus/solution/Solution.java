@@ -9,7 +9,7 @@ import polimi.or.pedibus.model.ProblemInstance;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Solution.
+ * The Class Solution about the path for the pedibus.
  */
 public class Solution {
 	
@@ -27,7 +27,7 @@ public class Solution {
 	
 	/**
 	 * Instantiates a new solution.
-	 *
+	 * it returns an empty solution for the instance.
 	 * @param instance the instance
 	 */
 	public Solution(ProblemInstance instance){
@@ -58,7 +58,7 @@ public class Solution {
 	
 	/**
 	 * Sets the next.
-	 *
+	 * it returns a solution with the next node for nodes in the solution 
 	 * @param node the node
 	 * @param nextNode the next node
 	 * @return the solution

@@ -143,7 +143,7 @@ public class ProblemInstance {
 	}
 	
 	/**
-	 * Gets the school.
+	 * Gets the school from the .dat file.
 	 *
 	 * @return the school
 	 */
@@ -152,9 +152,9 @@ public class ProblemInstance {
 	}
 	
 	/**
-	 * Gets the nodes.
+	 * Gets the nodes and put them into a list but not the school.
 	 *
-	 * @return the nodes
+	 * @return the nodes 
 	 */
 	public List<Entry<Integer,Node>> getNodes(){
 		return nodes.entrySet().stream()
@@ -163,7 +163,7 @@ public class ProblemInstance {
 	}
 	
 	/**
-	 * Gets the distance.
+	 * Gets the distance between nodes.
 	 *
 	 * @param n1 the n 1
 	 * @param n2 the n 2
@@ -174,7 +174,7 @@ public class ProblemInstance {
 	}
 	
 	/**
-	 * Gets the danger.
+	 * Gets the danger between nodes.
 	 *
 	 * @param n1 the n 1
 	 * @param n2 the n 2

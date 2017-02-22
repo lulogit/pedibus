@@ -2,7 +2,7 @@ package polimi.or.pedibus.model;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Node.
+ * The Class Node which are the node from .dat file.
  */
 public class Node {
 	
@@ -12,7 +12,8 @@ public class Node {
 	/**
 	 * Sets the x.
 	 *
-	 * @param x the new x
+	 * @param x the new x 
+	 * x is the x coordinate of the nodes
 	 */
 	public void setX(int x) {
 		this.x = x;
@@ -22,6 +23,7 @@ public class Node {
 	 * Sets the y.
 	 *
 	 * @param y the new y
+	 * y is the y coordinate of the nodes
 	 */
 	public void setY(int y) {
 		this.y = y;
@@ -29,7 +31,7 @@ public class Node {
 	
 	/**
 	 * Distance to.
-	 *
+	 *compute the distance between nodes which are in the .dat file.
 	 * @param other the other
 	 * @return the float
 	 */

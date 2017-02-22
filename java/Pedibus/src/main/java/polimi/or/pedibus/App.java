@@ -13,7 +13,7 @@ public class App
     
     /**
      * The main method.
-     *
+     * it demonstrates the solution by the app
      * @param args the arguments
      */
     public static void main( String[] args )
