@@ -4,12 +4,18 @@ import java.io.FileNotFoundException;
 
 import polimi.or.pedibus.model.ProblemInstance;
 
+// TODO: Auto-generated Javadoc
 /**
- * App to run for the challenge
- *
+ * App to run for the challenge.
  */
 public class App 
 {
+    
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     public static void main( String[] args )
     {
     	if (args.length<1){
