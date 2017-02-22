@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.stream.Collectors;
 public class ProblemInstance {
 	
 	/** The Constant SCHOOL. */
-	private static final int SCHOOL = 0;
+	public static final int SCHOOL = 0;
 	
 	/** The nodes. */
 	private final Map<Integer,Node> nodes;
@@ -35,6 +34,8 @@ public class ProblemInstance {
 	
 	/** The num nodes. */
 	public final int numNodes;
+	
+	private final List<Integer> indices;
 	 
 	/**
 	 * Instantiates a new problem instance.
@@ -49,6 +50,10 @@ public class ProblemInstance {
 		this.nodes = nodes;
 		this.distances = CostMatrix.euclideanDistances(nodes);
 		numNodes = nodes.size()-1;
+		indices = Collections.unmodifiableList(
+				nodes.keySet().stream()
+				.filter(i -> i>SCHOOL)
+				.collect(Collectors.toList()));
 	}
 	
 	
@@ -160,6 +165,10 @@ public class ProblemInstance {
 		return nodes.entrySet().stream()
 				.filter(e -> e.getKey()>SCHOOL)
 				.collect(Collectors.toList());
+	}
+	
+	public List<Integer> getNodeIndices(){
+		return indices;
 	}
 	
 	/**

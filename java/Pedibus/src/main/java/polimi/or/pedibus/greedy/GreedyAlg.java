@@ -8,7 +8,7 @@ import polimi.or.pedibus.solution.Solution;
  * The Class GreedyAlg.
  * it is a generic algorithm
  */
-public abstract class GreedyAlg {
+abstract class GreedyAlg {
 	
 	/**
 	 * Solve.
