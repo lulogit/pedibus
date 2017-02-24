@@ -2,6 +2,8 @@ package polimi.or.pedibus;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import polimi.or.pedibus.algorithms.AddNodeByDistanceGreedy;
 import polimi.or.pedibus.model.ProblemInstance;
@@ -22,7 +24,7 @@ public class App
     public static void main( String[] args )
     {
     	ProblemInstance p = null;
-    	if (args.length<1){
+    	if (args.length!=1){
     		System.out.println("Usage: java -jar pedibus.jar <pathTo/instanceFile.dat>");
     		
     	}
@@ -39,7 +41,9 @@ public class App
 		//Solution sol = (new SimplestGreedy()).solve(p);
 		Solution sol = (new AddNodeByDistanceGreedy()).applyTo(p);
 		
-		String outFile = args[0].replaceAll("[.]dat$", ".sol");
+		// write out solution
+		Path fp = Paths.get(args[0]);
+		String outFile = fp.getFileName().toString().replaceAll("[.]dat$", ".sol");
 		try {
 			sol.writeToFile(outFile);
 		} catch (IOException e) {
