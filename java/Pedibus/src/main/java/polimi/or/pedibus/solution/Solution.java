@@ -83,4 +83,9 @@ public class Solution {
 		Files.write(file, lines, Charset.forName("UTF-8"));
 	}
 
+	public double getScore() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import polimi.or.pedibus.algorithms.AddNodeByDistanceGreedy;
+import polimi.or.pedibus.algorithms.PedibusSA;
 import polimi.or.pedibus.model.ProblemInstance;
 import polimi.or.pedibus.solution.Solution;
 
@@ -39,7 +40,7 @@ public class App
 		System.out.println("Node number: "+p.getNodes().size());
 		
 		//Solution sol = (new SimplestGreedy()).solve(p);
-		Solution sol = (new AddNodeByDistanceGreedy()).applyTo(p);
+		Solution sol = (new PedibusSA()).applyTo(p);
 		
 		// write out solution
 		Path fp = Paths.get(args[0]);
