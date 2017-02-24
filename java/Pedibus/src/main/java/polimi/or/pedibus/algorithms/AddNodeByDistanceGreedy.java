@@ -19,10 +19,6 @@ public class AddNodeByDistanceGreedy extends Algorithm {
 		// add nodes to solution
         Set<PathEnd> paths = new HashSet<>();
         		
-        /* Iterator<Integer> iter = new ClosestFirstIterator<>(g, ProblemInstance.SCHOOL);
-        iter.next(); // discard first visited node (SCHOOL)
-        while (iter.hasNext()) {
-            int node = iter.next(); */
         for (Integer node: instance.getIndicesSortedBySchoolDistance()){
             // addToSoution
             Optional<PathEnd> selectedPath = 

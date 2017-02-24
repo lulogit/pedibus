@@ -259,5 +259,11 @@ public class ProblemInstance {
 				.collect(Collectors.toList());
 	}
 	
+	public List<Integer> getIndicesSortedByNodeDistance(int node){
+		return this.indices.stream()
+				.sorted(Comparator.comparingDouble(i -> getDistance(i, node)))
+				.collect(Collectors.toList());
+	}
+	
 
 }
