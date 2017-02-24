@@ -37,6 +37,6 @@ public class Node {
 		float dx = this.x-other.x;
 		float dy = this.y-other.y;
 		float dist = (float) Math.sqrt(dx*dx+dy*dy);
-		return (float) Math.round(dist * 10000) / 10000;
+		return (float) Math.round(dist * 10000) / 10000.f;
 	}
 }

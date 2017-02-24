@@ -44,7 +44,7 @@ public class CostMatrix {
 	 * Move to next row.
 	 */
 	protected void moveToNextRow() {
-		if (currentRow<size-1){
+		if (currentRow<size){
 			this.currentRow++;
 		}
 	}
@@ -57,8 +57,8 @@ public class CostMatrix {
 	 */
 	public static CostMatrix euclideanDistances(Map<Integer, Node> nodes) {
 		CostMatrix dm = new CostMatrix(nodes.size());
-		for (int i: nodes.keySet()){
-			for (int j: nodes.keySet()){
+		for (int i=0;i<dm.size;i++){
+			for (int j=0;j<dm.size;j++){
 				dm.setSetAtColumn(j, 
 						nodes.get(i).distanceTo(nodes.get(j)));
 			}

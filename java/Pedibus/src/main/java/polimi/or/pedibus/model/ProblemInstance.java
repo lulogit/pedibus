@@ -5,11 +5,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.stream.Collectors;
+
+import org.jgrapht.VertexFactory;
+import org.jgrapht.generate.CompleteGraphGenerator;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.SimpleDirectedWeightedGraph;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -118,12 +125,16 @@ public class ProblemInstance {
 	                 readD = false;
 		         } else {
 		        	 if (readX){
-		        		 i = Integer.parseInt(s[0]);
-		        		 nodes.get(i).setX(Integer.parseInt(s[1]));
+		        		 for (int j=0;j<s.length;j+=2){
+			        		 i = Integer.parseInt(s[j+0]);
+			        		 nodes.get(i).setX(Integer.parseInt(s[j+1]));
+		        		 }
 		        	 }
 		        	 if (readY){
-		        		 i = Integer.parseInt(s[0]);
-		        		 nodes.get(i).setY(Integer.parseInt(s[1]));
+		        		 for (int j=0;j<s.length;j+=2){
+			        		 i = Integer.parseInt(s[j+0]);
+			        		 nodes.get(i).setY(Integer.parseInt(s[j+1]));
+		        		 }
 		        	 }
 		        	 if (readD && !(":=".equals(s[s.length-1]))){
 		        		 for (i=0;i<nNodes+1;i++){
@@ -192,5 +203,61 @@ public class ProblemInstance {
 	public float getDanger(int n1, int n2){
 		return this.danger.at(n1, n2);
 	}
+	
+	public SimpleDirectedWeightedGraph<Integer, DefaultWeightedEdge> getDistanceGraph(){
+		
+		// undirected weighted graph
+		SimpleDirectedWeightedGraph<Integer, DefaultWeightedEdge> g = 
+				new SimpleDirectedWeightedGraph<>(DefaultWeightedEdge.class);
+		CompleteGraphGenerator<Integer, DefaultWeightedEdge> completeGenerator =
+	            new CompleteGraphGenerator<>(numNodes+1);
+		
+		// vertex are numbers 0..numNodes
+        VertexFactory<Integer> vFactory = new VertexFactory<Integer>()
+        {
+            private int id = 0;
+
+            @Override
+            public Integer createVertex()
+            {
+                return id++;
+            }
+        };
+
+        // Use the CompleteGraphGenerator object to make completeGraph a
+        // complete graph with [numNodes+1] number of vertices
+        completeGenerator.generateGraph(g, vFactory, null);
+
+        // remove edges exiting from SCHOOL,
+        // otherwise set edge weight to the distance
+        Set<Integer> vertices = g.vertexSet();
+        DefaultWeightedEdge e;
+        for (int i: vertices){
+        	for (int j: vertices){
+        		if (i!=j){
+        			e = g.getEdge(i, j);
+        			if (i==SCHOOL){
+	        			//g.removeEdge(e);
+        				g.setEdgeWeight(e, getDistance(i, j));
+	        		} else {
+	        			g.setEdgeWeight(e, getDistance(i, j));
+	        		}
+        		}
+        	}
+        }
+        
+		return g;
+	}
+	
+	public float getAlphaConstraintFor(int node){
+		return alpha * getDistance(node, SCHOOL);
+	}
+	
+	public List<Integer> getIndicesSortedBySchoolDistance(){
+		return this.indices.stream()
+				.sorted(Comparator.comparingDouble(i -> getDistance(i, SCHOOL)))
+				.collect(Collectors.toList());
+	}
+	
 
 }

@@ -1,4 +1,4 @@
-package polimi.or.pedibus.greedy;
+package polimi.or.pedibus.algorithms;
 
 import polimi.or.pedibus.model.ProblemInstance;
 import polimi.or.pedibus.solution.Solution;
@@ -7,7 +7,7 @@ import polimi.or.pedibus.solution.Solution;
 /**
  * The Class GreedyAlg.
  */
-abstract class GreedyAlg {
+abstract class Algorithm {
 	
 	/**
 	 * Solve.
@@ -15,6 +15,6 @@ abstract class GreedyAlg {
 	 * @param instance the instance
 	 * @return the solution
 	 */
-	public abstract Solution solve(ProblemInstance instance);
+	public abstract Solution applyTo(ProblemInstance instance);
 	
 }

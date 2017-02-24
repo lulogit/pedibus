@@ -1,4 +1,4 @@
-package polimi.or.pedibus.greedy;
+package polimi.or.pedibus.algorithms;
 
 import polimi.or.pedibus.model.ProblemInstance;
 import polimi.or.pedibus.solution.Solution;
@@ -7,13 +7,13 @@ import polimi.or.pedibus.solution.Solution;
 /**
  * The Class SimplestGreedy.
  */
-public class SimplestGreedy extends GreedyAlg {
+public class SimplestGreedy extends Algorithm {
 
 	/* (non-Javadoc)
 	 * @see polimi.or.pedibus.greedy.GreedyAlg#solve(polimi.or.pedibus.model.ProblemInstance)
 	 */
 	@Override
-	public Solution solve(ProblemInstance instance) {
+	public Solution applyTo(ProblemInstance instance) {
 		Solution currentSolution = new Solution(instance);
 		for (Integer i: instance.getNodeIndices()){
 			currentSolution = currentSolution.setNext(i, ProblemInstance.SCHOOL);
